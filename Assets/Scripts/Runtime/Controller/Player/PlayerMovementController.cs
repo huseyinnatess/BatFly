@@ -1,5 +1,4 @@
 ﻿using DG.Tweening;
-using Runtime.Data.UnityObjects;
 using Runtime.Data.ValueObjects;
 using UnityEngine;
 
@@ -15,10 +14,9 @@ namespace Runtime.Controller.Player
 
         #region Private Variables
 
+        private PlayerMovementData _movementData;
         private bool _isTouched;
 
-        private PlayerMovementData _movementData;
-
         #endregion
 
         #endregion
@@ -26,19 +24,9 @@ namespace Runtime.Controller.Player
         #endregion
 
 
-        private void Awake()
+        public void SetData(PlayerMovementData movementData)
         {
-            _isTouched = false;
-        }
-
-        private void Start()
-        {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            _movementData = Resources.Load<CD_Player>("Data/CD_Player").Data.MovementData;
+            _movementData = movementData;
         }
 
         private void FixedUpdate()
@@ -48,12 +36,6 @@ namespace Runtime.Controller.Player
             _isTouched = false;
         }
 
-        private void Update()
-        {
-            if (!Input.GetMouseButtonDown(0)) return;
-            _isTouched = true;
-        }
-
         private void Jump()
         {
             rigidbody.velocity = Vector3.zero;
@@ -61,6 +43,21 @@ namespace Runtime.Controller.Player
 
             rigidbody.DOMoveY(rigidbody.position.y + _movementData.JumpHeight, _movementData.JumpDuration)
                 .SetEase(Ease.OutQuad);
+        }
+
+        public void IsTouched()
+        {
+            _isTouched = true;
+        }
+
+        public void SetPlayerGravity()
+        {
+            rigidbody.useGravity = true;
+        }
+
+        public void OnReset()
+        {
+            _isTouched = false;
         }
     }
 }
