@@ -7,13 +7,21 @@ namespace Runtime.Data.ValueObjects
     public struct PlayerData
     {
         public PlayerMovementData MovementData;
+        public PlayerSpriteData SpriteData;
     }
-    
+
     [Serializable]
     public struct PlayerMovementData
     {
         public float JumpForce;
         public float JumpHeight;
         public float JumpDuration;
+        public float RotationCount;
+    }
+
+    [Serializable]
+    public struct PlayerSpriteData
+    {
+        public Sprite[] Sprites;
     }
 }

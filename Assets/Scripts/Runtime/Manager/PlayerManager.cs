@@ -14,6 +14,7 @@ namespace Runtime.Manager
         #region Serialized Variables
 
         [SerializeField] private PlayerMovementController movementController;
+        [SerializeField] private PlayerSpriteRendererController spriteRendererController;
 
         #endregion
 
@@ -36,10 +37,9 @@ namespace Runtime.Manager
             
             request.completed += operation =>
             {
-                if (request.asset is CD_Player cdPlayer)
-                {
-                    movementController.SetData(cdPlayer.Data.MovementData);
-                }
+                if (request.asset is not CD_Player cdPlayer) return;
+                movementController.SetData(cdPlayer.Data.MovementData);
+                spriteRendererController.SetData(cdPlayer.Data.SpriteData);
             };
         }
 
