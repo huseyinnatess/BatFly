@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     MovementData:
-      JumpForce: 10
-      JumpHeight: 2
+      JumpForce: 8
+      JumpHeight: 1
       JumpDuration: 0.3
+      RotationCount: 12
+    SpriteData:
+      Sprites:
+      - {fileID: 21300000, guid: 68d48a96e48a58244b8376e45b733fb4, type: 3}
+      - {fileID: 21300000, guid: cd9e7898b1e687c4b99aab72d7ae0ab0, type: 3}
+      - {fileID: 21300000, guid: e9335c163e61afb42a4f729c94c9d2bb, type: 3}

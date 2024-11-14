@@ -29,18 +29,18 @@ namespace Runtime.Manager
         private void Awake()
         {
             SetPlayerData();
+            SetDataToControllers();
         }
 
         private void SetPlayerData()
         {
-            var request = Resources.LoadAsync<CD_Player>("Data/CD_Player");
-            
-            request.completed += operation =>
-            {
-                if (request.asset is not CD_Player cdPlayer) return;
-                movementController.SetData(cdPlayer.Data.MovementData);
-                spriteRendererController.SetData(cdPlayer.Data.SpriteData);
-            };
+            _playerData = Resources.Load<CD_Player>("Data/CD_Player").Data;
+        }
+
+        private void SetDataToControllers()
+        {
+            movementController.SetData(_playerData.MovementData);
+            spriteRendererController.SetData(_playerData.SpriteData);
         }
 
         private void OnEnable()
@@ -54,7 +54,7 @@ namespace Runtime.Manager
             InputSignals.Instance.onFirstTimeTouchTaken += movementController.SetPlayerGravity;
             CoreGameSignals.Instance.onReset += movementController.OnReset;
         }
-        
+
         private void OnDisable()
         {
             UnsubscribeEvents();
