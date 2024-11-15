@@ -7,38 +7,22 @@ namespace Runtime.Data.ValueObjects
     [Serializable]
     public struct LevelElementData
     {
-        public PipeDatas PipeDatas;
-        public BackgroundData[] BackgroundDatas;
+        public PipeSettings PipeDatas;
+        public BackgroundSettings backgroundSettingses;
     }
 
     [Serializable]
-    public struct BackgroundData
+    public struct BackgroundSettings
     {
-        public Transform ParentBackground;
-        public Transform Background;
         public float SpawnCount;
         public float ScrollSpeed;
     }
 
     [Serializable]
-    public struct PipeDatas
-    {
-        public PipeObjects[] PipeObjects;
-        public PipeValues PipeValues;
-    }
-
-    [Serializable]
-    public struct PipeValues
+    public struct PipeSettings
     {
         public float MinHeight;
         public float MaxHeight;
         public float PipeGapHeight;
-    }
-
-    [Serializable]
-    public struct PipeObjects
-    {
-        public GameObject[] PipeUp;
-        public GameObject[] PipeDown;
     }
 }

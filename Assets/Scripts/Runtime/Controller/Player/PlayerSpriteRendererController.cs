@@ -19,9 +19,8 @@ namespace Runtime.Controller.Player
 
         #endregion
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
@@ -50,6 +49,7 @@ namespace Runtime.Controller.Player
         {
             _spriteRenderer.sprite = _spriteData.Sprites[0];
         }
+
         private void OnDisable()
         {
             UnsubscribeEvents();

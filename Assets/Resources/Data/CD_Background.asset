@@ -14,15 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     PipeDatas:
-      PipeObjects: []
-      PipeValues:
-        MinHeight: 0
-        MaxHeight: 0
-        PipeGapHeight: 0
-    BackgroundDatas:
-    - Background: {fileID: 0}
-      SpawnCount: 10.405
-      ScrollSpeed: 0
-    - Background: {fileID: 0}
-      SpawnCount: 13.585
-      ScrollSpeed: 0
+      MinHeight: -1.57
+      MaxHeight: 3.45
+      PipeGapHeight: 2.1
+    backgroundSettingses:
+      SpawnCount: 23.99
+      ScrollSpeed: 20

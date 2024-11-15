@@ -22,7 +22,7 @@ namespace Runtime.Manager
 
         private void Start()
         {
-            _backgroundResetObserver = new BackgroundResetObserver();
+            _backgroundResetObserver = new BackgroundObserver();
             PlayerTriggerController.Instance.AddObserver(_backgroundResetObserver);
         }
     }

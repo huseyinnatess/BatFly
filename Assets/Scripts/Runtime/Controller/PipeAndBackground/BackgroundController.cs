@@ -1,9 +1,7 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Runtime.Data.ValueObjects;
+using Runtime.Manager;
 using Runtime.MonoSingleton;
-using Sirenix.OdinInspector;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Runtime.Controller.PipeAndBackground
@@ -14,8 +12,9 @@ namespace Runtime.Controller.PipeAndBackground
 
         #region Private Variables
 
-        private BackgroundData _firstBackground;
-        private BackgroundData _secondBackground;
+        private Transform _firstBackground;
+        private Transform _secondBackground;
+        private PipeAndBackgroundObjects[] _backgroundObjects;
 
         private float _scrollSpeed;
         private float _spawnCount;
@@ -24,23 +23,23 @@ namespace Runtime.Controller.PipeAndBackground
 
         #endregion
 
-        public void SetDatas(BackgroundData[] data)
+        public void SetDatas(BackgroundSettings settings, PipeAndBackgroundObjects[] backgroundObjects)
         {
-            _firstBackground = data[0];
-            _secondBackground = data[1];
-            _scrollSpeed = _firstBackground.ScrollSpeed;
-            _spawnCount = _firstBackground.SpawnCount;
+            _firstBackground = backgroundObjects[0].Background;
+            _secondBackground = backgroundObjects[1].Background;
+            _scrollSpeed = settings.ScrollSpeed;
+            _spawnCount = settings.SpawnCount;
             ScrollBackground();
         }
 
         public void ScrollBackground()
         {
-            _firstBackground.Background
+            _firstBackground
                 .DOMoveX(-50, _scrollSpeed)
                 .SetRelative()
                 .SetEase(Ease.Linear);
 
-            _secondBackground.Background
+            _secondBackground
                 .DOMoveX(-50, _scrollSpeed)
                 .SetRelative()
                 .SetEase(Ease.Linear);
@@ -51,12 +50,12 @@ namespace Runtime.Controller.PipeAndBackground
             SetBackgroundPosition(levelTag == "FirstBackground" ? _secondBackground : _firstBackground);
         }
 
-        private void SetBackgroundPosition(BackgroundData data)
+        private void SetBackgroundPosition(Transform background)
         {
-            DOTween.Kill(data.Background);
+            DOTween.Kill(background);
 
-            Vector3 position = data.Background.position;
-            data.Background.position = new Vector2(position.x + _spawnCount, position.y);
+            Vector3 position = background.position;
+            background.position = new Vector2(position.x + _spawnCount, position.y);
 
             ScrollBackground();
         }

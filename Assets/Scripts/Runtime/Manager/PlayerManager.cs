@@ -1,5 +1,4 @@
-﻿using System;
-using Runtime.Controller.Player;
+﻿using Runtime.Controller.Player;
 using Runtime.Data.UnityObjects;
 using Runtime.Data.ValueObjects;
 using Runtime.Signals;

@@ -1,5 +1,5 @@
-﻿using System;
-using Runtime.Data.ValueObjects;
+﻿using Runtime.Data.ValueObjects;
+using Runtime.Manager;
 using Runtime.MonoSingleton;
 using Unity.Mathematics;
 using UnityEngine;
@@ -13,36 +13,36 @@ namespace Runtime.Controller.PipeAndBackground
 
         #region Private Variables
 
-        private PipeValues _values;
-        private PipeObjects[] _objects;
+        private PipeSettings _settings;
+        [SerializeField] private PipeAndBackgroundObjects[] pipeObjects;
 
         #endregion
 
         #endregion
-        
-        public void SetData(PipeDatas data)
+
+        public void SetData(PipeSettings pipeData, PipeAndBackgroundObjects[] pipeObjects)
         {
-            _values = data.PipeValues;
-            _objects = data.PipeObjects;
+            _settings = pipeData;
+            this.pipeObjects = pipeObjects;
         }
 
         public void SetPipesHeight(string levelTag)
         {
             if (levelTag == "FirstBackground")
-                SetHeight(_objects[1].PipeUp, _objects[1].PipeDown);
+                SetHeight(pipeObjects[1].PipeUp, pipeObjects[1].PipeDown);
             else
-                SetHeight(_objects[0].PipeUp, _objects[0].PipeDown);
+                SetHeight(pipeObjects[0].PipeUp, pipeObjects[0].PipeDown);
         }
 
-        private void SetHeight(GameObject[] pipeUp, GameObject[] pipeDown)
+        private void SetHeight(Transform[] pipeUp, Transform[] pipeDown)
         {
             for (int i = 0; i < pipeUp.Length; i++)
             {
-                float3 position = pipeUp[i].transform.position;
-                pipeUp[i].transform.position =
-                    new Vector2(position.x, Random.Range(_values.MinHeight, _values.MaxHeight));
+                float3 position = pipeUp[i].position;
+                pipeUp[i].position =
+                    new Vector2(position.x, Random.Range(_settings.MinHeight, _settings.MaxHeight));
 
-                pipeDown[i].transform.position = new Vector2(position.x, pipeUp[i].transform.position.y - _values.PipeGapHeight);
+                pipeDown[i].position = new Vector2(position.x, pipeUp[i].position.y - _settings.PipeGapHeight);
             }
         }
     }
