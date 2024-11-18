@@ -39,7 +39,6 @@ namespace Runtime.Manager
         protected void Awake()
         {
             SetData();
-            SendDataToControllers();
         }
 
         private void SendDataToControllers()
@@ -50,7 +49,14 @@ namespace Runtime.Manager
 
         private void SetData()
         {
-            _levelElementData = Resources.Load<CD_Background>("Data/CD_Background").Data;
+            var request = Resources.LoadAsync<CD_Background>("Data/CD_Background");
+
+            request.completed += operation =>
+            {
+                if (request.asset is CD_Background cdBackground)
+                    _levelElementData = cdBackground.Data;
+                SendDataToControllers();
+            };
         }
 
         private void OnEnable()

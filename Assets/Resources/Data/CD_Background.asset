@@ -18,5 +18,5 @@ MonoBehaviour:
       MaxHeight: 3.45
       PipeGapHeight: 2.1
     backgroundSettingses:
-      SpawnCount: 23.99
+      SpawnCount: 25.45
       ScrollSpeed: 20

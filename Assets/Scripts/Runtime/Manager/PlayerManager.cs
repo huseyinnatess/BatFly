@@ -28,15 +28,21 @@ namespace Runtime.Manager
         private void Awake()
         {
             SetPlayerData();
-            SetDataToControllers();
         }
 
         private void SetPlayerData()
         {
-            _playerData = Resources.Load<CD_Player>("Data/CD_Player").Data;
+            var request = Resources.LoadAsync<CD_Player>("Data/CD_Player");
+
+            request.completed += operation =>
+            {
+                if (request.asset is CD_Player cdPlayer)
+                    _playerData = cdPlayer.Data;
+                SendDataToControllers();
+            };
         }
 
-        private void SetDataToControllers()
+        private void SendDataToControllers()
         {
             movementController.SetData(_playerData.MovementData);
             spriteRendererController.SetData(_playerData.SpriteData);
