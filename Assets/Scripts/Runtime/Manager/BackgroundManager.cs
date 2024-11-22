@@ -5,6 +5,7 @@ using Runtime.Data.ValueObjects;
 using Runtime.MonoSingleton;
 using Runtime.Signals;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Runtime.Manager
 {
@@ -30,7 +31,7 @@ namespace Runtime.Manager
         #region Private Variables
 
         private LevelElementData _levelElementData;
-        [SerializeField] private PipeAndBackgroundObjects[] _pipeAndBackgroundObjects;
+        [SerializeField] private PipeAndBackgroundObjects[] pipeAndBackgroundObjects;
 
         #endregion
 
@@ -43,8 +44,8 @@ namespace Runtime.Manager
 
         private void SendDataToControllers()
         {
-            backgroundController.SetDatas(_levelElementData.backgroundSettingses, _pipeAndBackgroundObjects);
-            pipeController.SetData(_levelElementData.PipeDatas, _pipeAndBackgroundObjects);
+            backgroundController.SetDatas(_levelElementData.backgroundSettingses, pipeAndBackgroundObjects);
+            pipeController.SetData(_levelElementData.PipeDatas, pipeAndBackgroundObjects);
         }
 
         private void SetData()

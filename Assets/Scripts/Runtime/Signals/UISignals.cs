@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Runtime.Enums;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Runtime.Signals
@@ -24,5 +25,6 @@ namespace Runtime.Signals
         }
 
         public UnityAction<ushort> onScoreChange = delegate { };
+        public UnityAction<UIPanelTypes, byte> onOpenPanel = delegate { };
     }
 }

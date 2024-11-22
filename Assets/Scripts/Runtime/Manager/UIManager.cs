@@ -14,6 +14,7 @@ namespace Runtime.Manager
         private void SubscribeEvents()
         {
             UISignals.Instance.onScoreChange += ScoreController.Instance.ScoreChange;
+            UISignals.Instance.onOpenPanel += UIPanelController.Instance.OnOpenPanel;
         }
 
         private void OnDisable()
@@ -24,6 +25,7 @@ namespace Runtime.Manager
         private void UnsubscribeEvents()
         {
             UISignals.Instance.onScoreChange -= ScoreController.Instance.ScoreChange;
+            UISignals.Instance.onOpenPanel -= UIPanelController.Instance.OnOpenPanel;
         }
     }
 }

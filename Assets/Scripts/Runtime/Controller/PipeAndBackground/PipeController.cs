@@ -14,7 +14,7 @@ namespace Runtime.Controller.PipeAndBackground
         #region Private Variables
 
         private PipeSettings _settings;
-        [SerializeField] private PipeAndBackgroundObjects[] pipeObjects;
+        private PipeAndBackgroundObjects[] pipeObjects;
 
         #endregion
 
