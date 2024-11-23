@@ -16,20 +16,12 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 9e4de4ca7be4e25408371d65876e8be5
-  m_SerializeEntries:
-  - m_GUID: 1e217b49dd5e0094bb79c4d80eedc3fe
-    m_Address: Screens/GameOverPanel
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - uipanels
-  - m_GUID: a12181ad6db7f9d4b8d9245b0a7252a0
-    m_Address: Screens/MainMenuPanel
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - uipanels
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f8553d8d84b219d49856b9b624eb9a56, type: 2}
   m_SchemaSet:
     m_Schemas:
     - {fileID: 11400000, guid: 3691dca7f3f2d7a40b479f8403379c45, type: 2}
     - {fileID: 11400000, guid: 03d53075109d60145aefbc5b61da9cab, type: 2}
+  m_FolderEntryCache: []
+  m_AssetCollectionEntryCache: []

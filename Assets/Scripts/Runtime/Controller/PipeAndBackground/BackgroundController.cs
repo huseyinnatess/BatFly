@@ -18,6 +18,7 @@ namespace Runtime.Controller.PipeAndBackground
 
         private float _scrollSpeed;
         private float _spawnCount;
+        public bool isScrool;
 
         #endregion
 
@@ -29,9 +30,10 @@ namespace Runtime.Controller.PipeAndBackground
             _secondBackground = backgroundObjects[1].Background;
             _scrollSpeed = settings.ScrollSpeed;
             _spawnCount = settings.SpawnCount;
-            ScrollBackground();
+            if (isScrool)
+                ScrollBackground();
         }
-
+        
         public void ScrollBackground()
         {
             _firstBackground
@@ -48,6 +50,11 @@ namespace Runtime.Controller.PipeAndBackground
         public void SetBackgroundPosition(string levelTag)
         {
             SetBackgroundPosition(levelTag == "FirstBackground" ? _secondBackground : _firstBackground);
+        }
+
+        public void OnStopBackground()
+        {
+            DOTween.KillAll();
         }
 
         private void SetBackgroundPosition(Transform background)

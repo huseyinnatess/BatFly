@@ -1,5 +1,4 @@
-﻿using Runtime.MonoSingleton;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace Runtime.Signals
@@ -23,7 +22,8 @@ namespace Runtime.Signals
 
             Instance = this;
         }
-        
+
+        public UnityAction onSaveGame = delegate { };
         public UnityAction onReset = delegate { };
     }
 }

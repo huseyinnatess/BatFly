@@ -1,4 +1,4 @@
-﻿namespace Runtime.Enums
+﻿namespace Runtime.Enums.UI
 {
     public enum UIPanelTypes
     {

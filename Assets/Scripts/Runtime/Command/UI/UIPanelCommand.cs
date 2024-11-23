@@ -1,17 +1,12 @@
-﻿using System.Collections.Generic;
-using Runtime.Enums;
+﻿using Runtime.Enums.UI;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Runtime.Command.UI
 {
     public class UIPanelCommand
     {
-        private readonly List<Transform> _layers;
-        private AsyncOperationHandle<GameObject> _operationHandle;
-
-        public UIPanelCommand(List<Transform> layers)
+        private readonly Transform[] _layers;
+        public UIPanelCommand(Transform[] layers)
         {
             _layers = layers;
         }
@@ -19,19 +14,17 @@ namespace Runtime.Command.UI
         public void Execute(UIPanelTypes panelType, byte panelIndex)
         {
             Undo(panelIndex);
-            _operationHandle = Addressables.LoadAssetAsync<GameObject>($"Screens/{panelType}Panel");
+            var request = Resources.LoadAsync<GameObject>($"Screens/{panelType}Panel");
 
-            _operationHandle.Completed += asyncOperationHandle =>
+            request.completed += handle =>
             {
-                Object.Instantiate(_operationHandle.Result, _layers[panelIndex]);
+                Object.Instantiate(request.asset, _layers[panelIndex]);
             };
         }
 
-        private void Undo(byte panelIndex)
+        public void Undo(byte panelIndex)
         {
-            if (_operationHandle.IsValid())
-                Addressables.Release(_operationHandle);
-#if UNITY_2021_3_38
+#if UNITY_2021_3_38f
             if (_layers[panelIndex].childCount > 0)
                 Object.DestroyImmediate(_layers[panelIndex].GetChild(0).gameObject);
 #else

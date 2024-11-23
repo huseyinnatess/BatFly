@@ -11,11 +11,9 @@ namespace Runtime.Observers
         public void OnPlayerTriggered(Collider2D collider)
         {
             string parentName = collider.transform.parent.name;
-            if (collider.CompareTag("ScoreTrigger") && _oldParentName != parentName)
-            {
-                _oldParentName = parentName;
-                UISignals.Instance.onScoreChange?.Invoke(++_score);
-            }
+            if (!collider.CompareTag("ScoreTrigger") || _oldParentName == parentName) return;
+            _oldParentName = parentName;
+            UISignals.Instance.onScoreChange?.Invoke(++_score);
         }
     }
 }

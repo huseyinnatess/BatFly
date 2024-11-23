@@ -30,11 +30,15 @@ namespace Runtime.Manager
 
         private void Update()
         {
-            if (!Input.GetMouseButtonDown(0) && !IsPointerOverUIElement()) return;
-            InputSignals.Instance.onTouched?.Invoke();
-            if (_isFirstTimeTouchTaken) return;
-            InputSignals.Instance.onFirstTimeTouchTaken?.Invoke();
-            _isFirstTimeTouchTaken = true;
+            if (!Input.GetMouseButtonDown(0) || IsPointerOverUIElement()) return;
+            if (!_isFirstTimeTouchTaken)
+            {
+                InputSignals.Instance.onFirstTimeTouchTaken?.Invoke();
+                InputSignals.Instance.onTouched?.Invoke();
+                _isFirstTimeTouchTaken = true;
+            }
+            else
+                InputSignals.Instance.onTouched?.Invoke();
         }
 
         private bool IsPointerOverUIElement()

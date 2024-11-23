@@ -7,20 +7,25 @@ namespace Runtime.Controller.Player
 {
     public class PlayerTriggerController : MonoSingleton<PlayerTriggerController>
     {
-        private List<IPlayerTriggerObserver> _observers = new();
+        private readonly List<IPlayerTriggerObserver> _observers = new();
+        [SerializeField] private new Collider2D collider2D;
 
+        public void OnDisablePlayerCollider()
+        {
+            collider2D.enabled = false;
+        }
+        
         public void AddObserver(IPlayerTriggerObserver observer)
         {
             if (!_observers.Contains(observer))
                 _observers.Add(observer);
         }
 
-        public void RemoveObserver(IPlayerTriggerObserver observer)
+        public void OnReset()
         {
-            if (_observers.Contains(observer))
-                _observers.Remove(observer);
+            collider2D.enabled = true;
         }
-
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             NotifyObservers(other);

@@ -42,7 +42,7 @@ namespace Runtime.Controller.Player
         private void SubscribeEvents()
         {
             CoreGameSignals.Instance.onReset += OnReset;
-            PlayerSignals.Instance.onSpriteUpdate += UpdateSprite;
+            PlayerSignals.Instance.onPlayerSpriteUpdate += UpdateSprite;
         }
 
         private void OnReset()
@@ -58,7 +58,7 @@ namespace Runtime.Controller.Player
         private void UnsubscribeEvents()
         {
             CoreGameSignals.Instance.onReset -= OnReset;
-            PlayerSignals.Instance.onSpriteUpdate -= UpdateSprite;
+            PlayerSignals.Instance.onPlayerSpriteUpdate -= UpdateSprite;
         }
     }
 }

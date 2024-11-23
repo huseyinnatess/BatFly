@@ -70,6 +70,7 @@ namespace Runtime.Manager
             BackgroundSignals.Instance.onSetPipesHeight += pipeController.SetPipesHeight;
             BackgroundSignals.Instance.onScrollBackground += backgroundController.ScrollBackground;
             BackgroundSignals.Instance.onSetBackgroundPosition += backgroundController.SetBackgroundPosition;
+            BackgroundSignals.Instance.onStopBackground += backgroundController.OnStopBackground;
         }
 
         private void OnDisable()
@@ -82,6 +83,8 @@ namespace Runtime.Manager
             BackgroundSignals.Instance.onSetPipesHeight -= pipeController.SetPipesHeight;
             BackgroundSignals.Instance.onScrollBackground -= backgroundController.ScrollBackground;
             BackgroundSignals.Instance.onSetBackgroundPosition -= backgroundController.SetBackgroundPosition;
+            BackgroundSignals.Instance.onStopBackground += backgroundController.OnStopBackground;
+
         }
     }
 }

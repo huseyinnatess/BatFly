@@ -1,4 +1,6 @@
-﻿using Runtime.Interfaces;
+﻿using Runtime.Enums.UI;
+using Runtime.Interfaces;
+using Runtime.Signals;
 using UnityEngine;
 
 namespace Runtime.Observers
@@ -7,10 +9,10 @@ namespace Runtime.Observers
     {
         public void OnPlayerTriggered(Collider2D collider)
         {
-            if (collider.CompareTag("Pipe"))
-            {
-                // End Game panel açılacak
-            }
+            if (!collider.CompareTag("Pipe")) return;
+            UISignals.Instance.onOpenPanel?.Invoke(UIPanelTypes.GameOver, 1);
+            BackgroundSignals.Instance.onStopBackground?.Invoke();
+            PlayerSignals.Instance.onDisableCollider?.Invoke();
         }
     }
 }

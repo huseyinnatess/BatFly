@@ -1,4 +1,5 @@
-﻿using Runtime.Controller.Player;
+﻿using Runtime.Controller.PipeAndBackground;
+using Runtime.Controller.Player;
 using Runtime.Data.UnityObjects;
 using Runtime.Data.ValueObjects;
 using Runtime.Signals;
@@ -58,6 +59,8 @@ namespace Runtime.Manager
             InputSignals.Instance.onTouched += movementController.IsTouched;
             InputSignals.Instance.onFirstTimeTouchTaken += movementController.SetPlayerGravity;
             CoreGameSignals.Instance.onReset += movementController.OnReset;
+            CoreGameSignals.Instance.onReset += PlayerTriggerController.Instance.OnReset;
+            PlayerSignals.Instance.onDisableCollider += PlayerTriggerController.Instance.OnDisablePlayerCollider;
         }
 
         private void OnDisable()
@@ -70,6 +73,8 @@ namespace Runtime.Manager
             InputSignals.Instance.onTouched -= movementController.IsTouched;
             InputSignals.Instance.onFirstTimeTouchTaken -= movementController.SetPlayerGravity;
             CoreGameSignals.Instance.onReset -= movementController.OnReset;
+            CoreGameSignals.Instance.onReset -= PlayerTriggerController.Instance.OnReset;
+            PlayerSignals.Instance.onDisableCollider -= PlayerTriggerController.Instance.OnDisablePlayerCollider;
         }
     }
 }

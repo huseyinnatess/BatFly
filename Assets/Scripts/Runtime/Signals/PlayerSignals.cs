@@ -24,6 +24,7 @@ namespace Runtime.Signals
 
             Instance = this;
         }
-        public UnityAction<byte> onSpriteUpdate = delegate { };
+        public UnityAction<byte> onPlayerSpriteUpdate = delegate { };
+        public UnityAction onDisableCollider = delegate { };
     }
 }

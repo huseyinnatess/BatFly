@@ -54,14 +54,14 @@ namespace Runtime.Controller.Player
         private void StartRotationAnimation()
         {
             float startRotation = transform.parent.parent.rotation.z;
-            PlayerSignals.Instance.onSpriteUpdate?.Invoke((byte)PlayerSprite.UpFlap);
+            PlayerSignals.Instance.onPlayerSpriteUpdate?.Invoke((byte)PlayerSprite.UpFlap);
 
             rigidbody
                 .DORotate(startRotation + _movementData.RotationCount, _movementData.JumpDuration)
                 .SetEase(Ease.OutQuad)
                 .OnComplete(() =>
                 {
-                    PlayerSignals.Instance.onSpriteUpdate?.Invoke((byte)PlayerSprite.DownFlap);
+                    PlayerSignals.Instance.onPlayerSpriteUpdate?.Invoke((byte)PlayerSprite.DownFlap);
                     rigidbody.DORotate(startRotation - _movementData.RotationCount * 2, _movementData.JumpDuration)
                         .SetEase(Ease.OutQuad);
                 });

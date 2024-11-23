@@ -1,4 +1,6 @@
-﻿using Runtime.Enums;
+﻿using System;
+using Runtime.Enums;
+using Runtime.Enums.UI;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,5 +28,8 @@ namespace Runtime.Signals
 
         public UnityAction<ushort> onScoreChange = delegate { };
         public UnityAction<UIPanelTypes, byte> onOpenPanel = delegate { };
+        public UnityAction<byte> onClosePanel = delegate { };
+        public UnityAction onWriteScores = delegate { };
+        public Func<ushort> onGetScore = null;
     }
 }

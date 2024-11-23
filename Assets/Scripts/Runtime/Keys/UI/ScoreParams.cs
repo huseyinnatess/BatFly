@@ -5,6 +5,7 @@ namespace Runtime.Keys.UI
 {
     public struct ScoreParams
     {
+        public ushort Score;
         public ushort ScoreLenght;
         public ushort OldLenght;
         public Vector3 LeftSpaceCount;

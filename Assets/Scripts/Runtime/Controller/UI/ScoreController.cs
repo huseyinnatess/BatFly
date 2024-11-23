@@ -47,23 +47,30 @@ namespace Runtime.Controller.UI
             Instance = this;
         }
 
-        public void ScoreChange(ushort score)
+        public void OnScoreChange(ushort score)
         {
             string scoreText = score.ToString();
             _scoreParams.ScoreLenght = (ushort)scoreText.Length;
             if (_scoreParams.ScoreLenght > 1 && _scoreParams.OldLenght != _scoreParams.ScoreLenght)
             {
-                SetScore(scoreText, score);
+                SetScoreUI(scoreText, score);
                 IncrementDigit(_scoreParams.ScoreLenght);
                 SetDigitDefaultPositions(_scoreParams.ScoreLenght);
                 SetDigitPositions();
                 _scoreParams.OldLenght = _scoreParams.ScoreLenght;
             }
             else
-                SetScore(scoreText, score);
+                SetScoreUI(scoreText, score);
+
+            _scoreParams.Score = score;
         }
 
-        private void SetScore(string scoreText, ushort score)
+        public ushort OnGetScore()
+        {
+            return _scoreParams.Score;
+        }
+
+        private void SetScoreUI(string scoreText, ushort score)
         {
             if (_scoreParams.ScoreLenght == 1)
             {

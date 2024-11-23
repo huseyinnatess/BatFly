@@ -23,9 +23,9 @@ namespace Runtime.Signals
             Instance = this;
         }
 
-        public UnityAction onBackgroundEndReached = delegate { };
         public UnityAction<string> onSetPipesHeight = delegate { };
         public UnityAction onScrollBackground = delegate { };
+        public UnityAction onStopBackground = delegate { };
         public UnityAction<string> onSetBackgroundPosition = delegate { };
     }
 }
