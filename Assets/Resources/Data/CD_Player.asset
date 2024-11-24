@@ -18,6 +18,7 @@ MonoBehaviour:
       JumpHeight: 1
       JumpDuration: 0.3
       RotationCount: 12
+      DefaultPosition: {x: 3.3, y: -1.14}
     SpriteData:
       Sprites:
       - {fileID: 21300000, guid: 68d48a96e48a58244b8376e45b733fb4, type: 3}

@@ -1,14 +1,35 @@
 ﻿using System.Collections.Generic;
 using Runtime.Interfaces;
-using Runtime.MonoSingleton;
 using UnityEngine;
 
 namespace Runtime.Controller.Player
 {
-    public class PlayerTriggerController : MonoSingleton<PlayerTriggerController>
+    public class PlayerTriggerController : MonoBehaviour
     {
+        public static PlayerTriggerController Instance;
         private readonly List<IPlayerTriggerObserver> _observers = new();
         [SerializeField] private new Collider2D collider2D;
+
+        #region Singleton
+
+        private void Awake()
+        {
+            Singleton();
+        }
+
+        private void Singleton()
+        {
+            if (Instance != this && Instance != null)
+            {
+                Destroy(this);
+                return;
+            }
+
+            Instance = this;
+        }
+
+        #endregion
+        
 
         public void OnDisablePlayerCollider()
         {
@@ -33,7 +54,7 @@ namespace Runtime.Controller.Player
 
         private void NotifyObservers(Collider2D other)
         {
-            for (int i = 0; i < _observers.Count; i++)
+            for (byte i = 0; i < _observers.Count; i++)
             {
                 _observers[i].OnPlayerTriggered(other);
             }

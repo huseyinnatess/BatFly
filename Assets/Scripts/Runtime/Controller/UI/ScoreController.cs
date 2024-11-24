@@ -54,7 +54,7 @@ namespace Runtime.Controller.UI
             if (_scoreParams.ScoreLenght > 1 && _scoreParams.OldLenght != _scoreParams.ScoreLenght)
             {
                 SetScoreUI(scoreText, score);
-                IncrementDigit(_scoreParams.ScoreLenght);
+                DigitStatus(_scoreParams.ScoreLenght, true);
                 SetDigitDefaultPositions(_scoreParams.ScoreLenght);
                 SetDigitPositions();
                 _scoreParams.OldLenght = _scoreParams.ScoreLenght;
@@ -68,6 +68,13 @@ namespace Runtime.Controller.UI
         public ushort OnGetScore()
         {
             return _scoreParams.Score;
+        }
+
+        public void OnReset()
+        {
+            SetDigitDefaultPositions(_scoreParams.ScoreLenght);
+            DigitStatus(_scoreParams.ScoreLenght, false);
+            OnScoreChange(0);
         }
 
         private void SetScoreUI(string scoreText, ushort score)
@@ -105,12 +112,12 @@ namespace Runtime.Controller.UI
                 }
             }
         }
-
-        private void IncrementDigit(ushort digit)
+        
+        private void DigitStatus(ushort digit, bool status)
         {
-            for (ushort i = 0; i < digit; i++)
+            for (ushort i = 1; i < digit; i++)
             {
-                scoreImages[i].gameObject.SetActive(true);
+                scoreImages[i].gameObject.SetActive(status);
             }
         }
 

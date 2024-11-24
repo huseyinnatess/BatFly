@@ -40,6 +40,7 @@ namespace Runtime.Manager
             UISignals.Instance.onOpenPanel += _uiPanelCommand.Execute;
             UISignals.Instance.onClosePanel += _uiPanelCommand.Undo;
             CoreGameSignals.Instance.onReset += _uiPanelCommand.OnReset;
+            CoreGameSignals.Instance.onReset += ScoreController.Instance.OnReset;
             UISignals.Instance.onGetScore += ScoreController.Instance.OnGetScore;
         }
 
@@ -54,6 +55,7 @@ namespace Runtime.Manager
             UISignals.Instance.onOpenPanel -= _uiPanelCommand.Execute;
             UISignals.Instance.onClosePanel -= _uiPanelCommand.Undo;
             CoreGameSignals.Instance.onReset -= _uiPanelCommand.OnReset;
+            CoreGameSignals.Instance.onReset -= ScoreController.Instance.OnReset;
             UISignals.Instance.onGetScore -= ScoreController.Instance.OnGetScore;
         }
 

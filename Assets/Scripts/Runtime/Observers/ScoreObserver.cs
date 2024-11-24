@@ -11,8 +11,7 @@ namespace Runtime.Observers
         public void OnPlayerTriggered(Collider2D collider)
         {
             string parentName = collider.transform.parent.name;
-            if (!collider.CompareTag("ScoreTrigger") || _oldParentName == parentName
-                || string.IsNullOrEmpty(_oldParentName)) return;
+            if (!collider.CompareTag("ScoreTrigger") || _oldParentName == parentName) return;
             _oldParentName = parentName;
             UISignals.Instance.onScoreChange?.Invoke(++_score);
         }
@@ -20,7 +19,7 @@ namespace Runtime.Observers
         public void OnReset()
         {
             _score = 0;
-            _oldParentName = null;
+            _oldParentName = "";
         }
     }
 }
