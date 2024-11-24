@@ -2,6 +2,7 @@
 {
     public enum UIEventSubscriptionTypes
     {
-        OnPlay
+        OnPlay,
+        OnRestart
     }
 }

@@ -14,7 +14,7 @@ namespace Runtime.Controller.PipeAndBackground
         #region Private Variables
 
         private PipeSettings _settings;
-        private PipeAndBackgroundObjects[] pipeObjects;
+        private PipeAndBackgroundObjects[] _pipeObjects;
 
         #endregion
 
@@ -23,20 +23,43 @@ namespace Runtime.Controller.PipeAndBackground
         public void SetData(PipeSettings pipeData, PipeAndBackgroundObjects[] pipeObjects)
         {
             _settings = pipeData;
-            this.pipeObjects = pipeObjects;
+            _pipeObjects = pipeObjects;
         }
 
         public void SetPipesHeight(string levelTag)
         {
             if (levelTag == "FirstBackground")
-                SetHeight(pipeObjects[1].PipeUp, pipeObjects[1].PipeDown);
+                SetHeight(_pipeObjects[1].PipeUp, _pipeObjects[1].PipeDown);
             else
-                SetHeight(pipeObjects[0].PipeUp, pipeObjects[0].PipeDown);
+                SetHeight(_pipeObjects[0].PipeUp, _pipeObjects[0].PipeDown);
+        }
+
+        public void OnActivatePipes()
+        {
+            PipesStatus(true);
+        }
+
+
+        public void OnReset()
+        {
+            PipesStatus(false);
+        }
+
+        private void PipesStatus(bool status)
+        {
+            var pipesUp = _pipeObjects[0].PipeUp;
+            var pipesDown = _pipeObjects[0].PipeDown;
+
+            for (byte i = 0; i < 2; i++)
+            {
+                pipesUp[i].gameObject.SetActive(status);
+                pipesDown[i].gameObject.SetActive(status);
+            }
         }
 
         private void SetHeight(Transform[] pipeUp, Transform[] pipeDown)
         {
-            for (int i = 0; i < pipeUp.Length; i++)
+            for (byte i = 0; i < pipeUp.Length; i++)
             {
                 float3 position = pipeUp[i].position;
                 pipeUp[i].position =

@@ -4,6 +4,7 @@ using Runtime.Data.UnityObjects;
 using Runtime.Data.ValueObjects;
 using Runtime.MonoSingleton;
 using Runtime.Signals;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -15,6 +16,7 @@ namespace Runtime.Manager
         public Transform Background;
         public Transform[] PipeUp;
         public Transform[] PipeDown;
+        public float3 Position;
     }
 
     public class BackgroundManager : MonoSingleton<BackgroundManager>
@@ -37,11 +39,11 @@ namespace Runtime.Manager
 
         #endregion
 
-        protected void Awake()
+        private void Awake()
         {
             SetData();
         }
-
+        
         private void SendDataToControllers()
         {
             backgroundController.SetDatas(_levelElementData.backgroundSettingses, pipeAndBackgroundObjects);
@@ -64,13 +66,31 @@ namespace Runtime.Manager
         {
             SubscribeEvents();
         }
-
+        
+        private void SetDefaultPositions()
+        {
+            for (byte i = 0; i < pipeAndBackgroundObjects.Length; i++)
+            {
+                var objects = pipeAndBackgroundObjects[i];
+                objects.Background.position = objects.Position;
+            }
+        }
+        
+        private void OnReset()
+        {
+            SetDefaultPositions();
+            backgroundController.ScrollBackground();
+        }
+        
         private void SubscribeEvents()
         {
             BackgroundSignals.Instance.onSetPipesHeight += pipeController.SetPipesHeight;
             BackgroundSignals.Instance.onScrollBackground += backgroundController.ScrollBackground;
             BackgroundSignals.Instance.onSetBackgroundPosition += backgroundController.SetBackgroundPosition;
             BackgroundSignals.Instance.onStopBackground += backgroundController.OnStopBackground;
+            BackgroundSignals.Instance.onActivatePipes += pipeController.OnActivatePipes;
+            CoreGameSignals.Instance.onReset += pipeController.OnReset;
+            CoreGameSignals.Instance.onReset += OnReset;
         }
 
         private void OnDisable()
@@ -84,7 +104,8 @@ namespace Runtime.Manager
             BackgroundSignals.Instance.onScrollBackground -= backgroundController.ScrollBackground;
             BackgroundSignals.Instance.onSetBackgroundPosition -= backgroundController.SetBackgroundPosition;
             BackgroundSignals.Instance.onStopBackground += backgroundController.OnStopBackground;
-
+            CoreGameSignals.Instance.onReset -= pipeController.OnReset;
+            CoreGameSignals.Instance.onReset -= OnReset;
         }
     }
 }

@@ -33,12 +33,12 @@ namespace Runtime.Manager
             if (!Input.GetMouseButtonDown(0) || IsPointerOverUIElement()) return;
             if (!_isFirstTimeTouchTaken)
             {
-                InputSignals.Instance.onFirstTimeTouchTaken?.Invoke();
-                InputSignals.Instance.onTouched?.Invoke();
+                InputSignals.Instance.onFirstTimeTouchTaken?.Invoke(1);
+                InputSignals.Instance.onTouched?.Invoke(true);
                 _isFirstTimeTouchTaken = true;
             }
             else
-                InputSignals.Instance.onTouched?.Invoke();
+                InputSignals.Instance.onTouched?.Invoke(true);
         }
 
         private bool IsPointerOverUIElement()

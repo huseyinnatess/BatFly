@@ -50,7 +50,7 @@ namespace Runtime.Controller.Player
                 .SetEase(Ease.OutQuad)
                 .OnComplete(() => { rigidbody.velocity = Vector2.zero; });
         }
-        
+
         private void StartRotationAnimation()
         {
             float startRotation = transform.parent.parent.rotation.z;
@@ -67,19 +67,28 @@ namespace Runtime.Controller.Player
                 });
         }
 
-        public void IsTouched()
+        public void IsTouched(bool status)
         {
-            _isTouched = true;
+            _isTouched = status;
         }
 
-        public void SetPlayerGravity()
+        public void SetPlayerGravity(byte gravity)
         {
-            rigidbody.gravityScale = 1;
+            rigidbody.gravityScale = gravity;
+        }
+
+        private void SetDefaultPosition()
+        {
+            rigidbody.transform.position = _movementData.DefaultPosition;
         }
 
         public void OnReset()
         {
-            _isTouched = false;
+            IsTouched(false);
+            SetPlayerGravity(0);
+            rigidbody.velocity = Vector2.zero;
+            rigidbody.transform.rotation = Quaternion.identity;
+            SetDefaultPosition();
         }
     }
 }

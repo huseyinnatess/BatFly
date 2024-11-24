@@ -1,6 +1,7 @@
 ﻿using System;
 using Runtime.Enums.UI;
 using Runtime.Manager;
+using Runtime.Signals;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,6 +49,9 @@ namespace Runtime.Handlers
                 case UIEventSubscriptionTypes.OnPlay:
                     button.onClick.AddListener(_manager.OnPlay);
                     break;
+                case UIEventSubscriptionTypes.OnRestart:
+                    button.onClick.AddListener(() => CoreGameSignals.Instance.onReset?.Invoke());
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -60,14 +64,7 @@ namespace Runtime.Handlers
 
         private void UnubscribeEvents()
         {
-            switch (type)
-            {
-                case UIEventSubscriptionTypes.OnPlay:
-                    button.onClick.RemoveAllListeners();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            button.onClick.RemoveAllListeners();
         }
     }
 }

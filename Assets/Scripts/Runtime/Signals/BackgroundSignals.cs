@@ -27,5 +27,6 @@ namespace Runtime.Signals
         public UnityAction onScrollBackground = delegate { };
         public UnityAction onStopBackground = delegate { };
         public UnityAction<string> onSetBackgroundPosition = delegate { };
+        public UnityAction onActivatePipes = delegate {};
     }
 }

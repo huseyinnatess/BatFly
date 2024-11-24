@@ -24,13 +24,13 @@ namespace Runtime.Command.UI
 
         public void Undo(byte panelIndex)
         {
-#if UNITY_2021_3_38f
-            if (_layers[panelIndex].childCount > 0)
-                Object.DestroyImmediate(_layers[panelIndex].GetChild(0).gameObject);
-#else
             if (_layers[panelIndex].childCount > 0)
                 Object.Destroy(_layers[panelIndex].GetChild(0).gameObject);
-#endif
+        }
+
+        public void OnReset()
+        {
+            Undo(1);
         }
     }
 }

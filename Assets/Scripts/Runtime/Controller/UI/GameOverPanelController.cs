@@ -27,11 +27,11 @@ namespace Runtime.Controller.UI
         private void OnEnable()
         {
             _highScore = (ushort)PlayerPrefs.GetInt("HighLevel");
-            OnWriteScores();
+            WriteScore();
             WriteHighScore();
         }
 
-        private void OnWriteScores()
+        private void WriteScore()
         {
             _score = UISignals.Instance.onGetScore?.Invoke() ?? 0;
             scoreText.text = _score.ToString();
@@ -39,9 +39,15 @@ namespace Runtime.Controller.UI
 
         private void WriteHighScore()
         {
-            if (_score <= _highScore) return;
-            highScoreText.text = _score.ToString();
-            CoreGameSignals.Instance.onSaveGame?.Invoke();
+            if (_score > _highScore)
+            {
+                highScoreText.text = _score.ToString();
+                CoreGameSignals.Instance.onSaveGame?.Invoke();
+            }
+            else
+                highScoreText.text = _highScore.ToString();
         }
+        
+        
     }
 }

@@ -17,6 +17,7 @@ namespace Runtime.Data.ValueObjects
         public float JumpHeight;
         public float JumpDuration;
         public float RotationCount;
+        public Vector2 DefaultPosition;
     }
 
     [Serializable]

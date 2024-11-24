@@ -23,7 +23,7 @@ namespace Runtime.Signals
             Instance = this;
         }
 
-        public UnityAction onTouched = delegate { };
-        public UnityAction onFirstTimeTouchTaken = delegate { };
+        public UnityAction<bool> onTouched = delegate { };
+        public UnityAction<byte> onFirstTimeTouchTaken = delegate { };
     }
 }
