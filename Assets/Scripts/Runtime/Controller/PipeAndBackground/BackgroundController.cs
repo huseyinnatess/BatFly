@@ -18,8 +18,7 @@ namespace Runtime.Controller.PipeAndBackground
 
         private float _scrollSpeed;
         private float _spawnCount;
-        public bool isScrool;
-
+        
         #endregion
 
         #endregion
@@ -30,8 +29,6 @@ namespace Runtime.Controller.PipeAndBackground
             _secondBackground = backgroundObjects[1].Background;
             _scrollSpeed = settings.ScrollSpeed;
             _spawnCount = settings.SpawnCount;
-            if (isScrool)
-                ScrollBackground();
         }
         
         public void ScrollBackground()

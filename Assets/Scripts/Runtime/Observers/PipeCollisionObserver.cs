@@ -13,6 +13,7 @@ namespace Runtime.Observers
             UISignals.Instance.onOpenPanel?.Invoke(UIPanelTypes.GameOver, 1);
             BackgroundSignals.Instance.onStopBackground?.Invoke();
             PlayerSignals.Instance.onDisableCollider?.Invoke();
+            AudioSignals.Instance.onDieAudio?.Invoke();
         }
     }
 }

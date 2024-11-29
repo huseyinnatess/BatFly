@@ -1,4 +1,5 @@
-﻿using Runtime.Signals;
+﻿using DG.Tweening;
+using Runtime.Signals;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,7 +48,5 @@ namespace Runtime.Controller.UI
             else
                 highScoreText.text = _highScore.ToString();
         }
-        
-        
     }
 }

@@ -13,6 +13,7 @@ namespace Runtime.Observers
             string parentName = collider.transform.parent.name;
             if (!collider.CompareTag("ScoreTrigger") || _oldParentName == parentName) return;
             _oldParentName = parentName;
+            AudioSignals.Instance.onSuccessAudio?.Invoke();
             UISignals.Instance.onScoreChange?.Invoke(++_score);
         }
 

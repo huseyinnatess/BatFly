@@ -39,6 +39,7 @@ namespace Runtime.Manager
             }
             else
                 InputSignals.Instance.onTouched?.Invoke(true);
+            AudioSignals.Instance.onWingAudio?.Invoke();
         }
 
         private bool IsPointerOverUIElement()

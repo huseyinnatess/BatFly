@@ -1,5 +1,4 @@
-﻿using System;
-using Runtime.Command.UI;
+﻿using Runtime.Command.UI;
 using Runtime.Controller.UI;
 using Runtime.Signals;
 using UnityEngine;

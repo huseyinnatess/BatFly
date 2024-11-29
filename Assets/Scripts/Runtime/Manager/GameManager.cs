@@ -1,10 +1,8 @@
-﻿using System;
-using Runtime.Controller.Player;
+﻿using Runtime.Controller.Player;
 using Runtime.Interfaces;
 using Runtime.Observers;
 using Runtime.Signals;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Runtime.Manager
 {
