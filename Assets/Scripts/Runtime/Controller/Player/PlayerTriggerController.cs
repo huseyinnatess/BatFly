@@ -8,7 +8,7 @@ namespace Runtime.Controller.Player
     {
         public static PlayerTriggerController Instance;
         private readonly List<IPlayerTriggerObserver> _observers = new();
-        [SerializeField] private new Collider2D collider2D;
+        [SerializeField] private Collider2D collider2D;
 
         #region Singleton
 

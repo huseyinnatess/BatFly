@@ -19,4 +19,4 @@ MonoBehaviour:
       PipeGapHeight: 1.35
     backgroundSettingses:
       SpawnCount: 40
-      ScrollSpeed: 20
+      ScrollSpeed: 2

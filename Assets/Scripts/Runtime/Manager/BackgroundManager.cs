@@ -79,13 +79,13 @@ namespace Runtime.Manager
         private void OnReset()
         {
             SetDefaultPositions();
-            backgroundController.ScrollBackground();
+            backgroundController.OnScrollBackground();
         }
         
         private void SubscribeEvents()
         {
             BackgroundSignals.Instance.onSetPipesHeight += pipeController.SetPipesHeight;
-            BackgroundSignals.Instance.onScrollBackground += backgroundController.ScrollBackground;
+            BackgroundSignals.Instance.onScrollBackground += backgroundController.OnScrollBackground;
             BackgroundSignals.Instance.onSetBackgroundPosition += backgroundController.SetBackgroundPosition;
             BackgroundSignals.Instance.onStopBackground += backgroundController.OnStopBackground;
             BackgroundSignals.Instance.onActivatePipes += pipeController.OnActivatePipes;
@@ -101,7 +101,7 @@ namespace Runtime.Manager
         private void UnsubscribeEvents()
         {
             BackgroundSignals.Instance.onSetPipesHeight -= pipeController.SetPipesHeight;
-            BackgroundSignals.Instance.onScrollBackground -= backgroundController.ScrollBackground;
+            BackgroundSignals.Instance.onScrollBackground -= backgroundController.OnScrollBackground;
             BackgroundSignals.Instance.onSetBackgroundPosition -= backgroundController.SetBackgroundPosition;
             BackgroundSignals.Instance.onStopBackground += backgroundController.OnStopBackground;
             CoreGameSignals.Instance.onReset -= pipeController.OnReset;
