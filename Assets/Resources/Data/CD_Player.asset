@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     MovementData:
-      JumpForce: 8
-      JumpHeight: 1
-      JumpDuration: 0.3
-      RotationCount: 12
+      JumpForce: 6
+      JumpHeight: 0.6
+      JumpDuration: 0.2
+      RotationCount: 10
       DefaultPosition: {x: 3.3, y: -1.14}
     SpriteData:
       Sprites:
-      - {fileID: 21300000, guid: 68d48a96e48a58244b8376e45b733fb4, type: 3}
-      - {fileID: 21300000, guid: cd9e7898b1e687c4b99aab72d7ae0ab0, type: 3}
-      - {fileID: 21300000, guid: e9335c163e61afb42a4f729c94c9d2bb, type: 3}
+      - {fileID: 21300000, guid: d7659f154aaf2a144bb86bf6120ad8e0, type: 3}
+      - {fileID: 21300000, guid: a3fe111a50e25d64d83a4bda9bed4b02, type: 3}
+      - {fileID: 21300000, guid: 4df42c2f2aeeb904987ffc53b04e8740, type: 3}

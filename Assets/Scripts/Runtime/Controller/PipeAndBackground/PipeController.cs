@@ -1,4 +1,5 @@
-﻿using Runtime.Data.ValueObjects;
+﻿using System;
+using Runtime.Data.ValueObjects;
 using Runtime.Manager;
 using Runtime.MonoSingleton;
 using Unity.Mathematics;
@@ -56,7 +57,7 @@ namespace Runtime.Controller.PipeAndBackground
                 pipesDown[i].gameObject.SetActive(status);
             }
         }
-
+        
         private void SetHeight(Transform[] pipeUp, Transform[] pipeDown)
         {
             for (byte i = 0; i < pipeUp.Length; i++)
@@ -67,6 +68,7 @@ namespace Runtime.Controller.PipeAndBackground
 
                 pipeDown[i].position = new Vector2(position.x, pipeUp[i].position.y - _settings.PipeGapHeight);
             }
+
         }
     }
 }

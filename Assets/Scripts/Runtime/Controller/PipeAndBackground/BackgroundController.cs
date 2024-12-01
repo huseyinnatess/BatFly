@@ -29,6 +29,7 @@ namespace Runtime.Controller.PipeAndBackground
             _secondBackground = backgroundObjects[1].Background;
             _scrollSpeed = settings.ScrollSpeed;
             _spawnCount = settings.SpawnCount;
+            ScrollBackground();
         }
         
         public void ScrollBackground()

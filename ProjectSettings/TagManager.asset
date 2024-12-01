@@ -45,11 +45,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background 2
+    uniqueID: 938409875
+    locked: 0
   - name: Background
     uniqueID: 1196207507
     locked: 0
   - name: Pipes
     uniqueID: 2728182515
+    locked: 0
+  - name: Soil
+    uniqueID: 1931191927
     locked: 0
   - name: Player
     uniqueID: 2302820389
