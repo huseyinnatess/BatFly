@@ -51,8 +51,14 @@ TagManager:
   - name: Background
     uniqueID: 1196207507
     locked: 0
+  - name: Environment 2
+    uniqueID: 3766109423
+    locked: 0
   - name: Pipes
     uniqueID: 2728182515
+    locked: 0
+  - name: Environment 1
+    uniqueID: 3058257071
     locked: 0
   - name: Soil
     uniqueID: 1931191927

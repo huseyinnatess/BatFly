@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     MovementData:
-      JumpForce: 6
-      JumpHeight: 0.6
+      JumpForce: 4
+      JumpHeight: 0.4
       JumpDuration: 0.2
-      RotationCount: 10
+      RotationCount: 8
       DefaultPosition: {x: 3.3, y: -1.14}
     SpriteData:
       Sprites:
