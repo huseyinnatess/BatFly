@@ -1,36 +1,15 @@
 ﻿using System.Collections.Generic;
 using Runtime.Interfaces;
+using Runtime.MonoSingleton;
 using UnityEngine;
 
 namespace Runtime.Controller.Player
 {
-    public class PlayerTriggerController : MonoBehaviour
+    public class PlayerTriggerController : MonoSingleton<PlayerTriggerController>
     {
-        public static PlayerTriggerController Instance;
         private readonly List<IPlayerTriggerObserver> _observers = new();
-        [SerializeField] private Collider2D collider2D;
-
-        #region Singleton
-
-        private void Awake()
-        {
-            Singleton();
-        }
-
-        private void Singleton()
-        {
-            if (Instance != this && Instance != null)
-            {
-                Destroy(this);
-                return;
-            }
-
-            Instance = this;
-        }
-
-        #endregion
+        [SerializeField] private new Collider2D collider2D;
         
-
         public void OnDisablePlayerCollider()
         {
             collider2D.enabled = false;

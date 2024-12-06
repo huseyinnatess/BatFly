@@ -27,7 +27,7 @@ namespace Runtime.Controller.PipeAndBackground
             _pipeObjects = pipeObjects;
         }
 
-        public void SetPipesHeight(string levelTag)
+        public void OnSetPipesHeight(string levelTag)
         {
             if (levelTag == "FirstBackground")
                 SetHeight(_pipeObjects[1].PipeUp, _pipeObjects[1].PipeDown);
@@ -37,21 +37,21 @@ namespace Runtime.Controller.PipeAndBackground
 
         public void OnActivatePipes()
         {
-            PipesStatus(true);
+            OnSetPipesStatus(true);
         }
 
 
         public void OnReset()
         {
-            PipesStatus(false);
+            OnSetPipesStatus(false);
         }
 
-        private void PipesStatus(bool status)
+        private void OnSetPipesStatus(bool status)
         {
             var pipesUp = _pipeObjects[0].PipeUp;
             var pipesDown = _pipeObjects[0].PipeDown;
 
-            for (byte i = 0; i < 2; i++)
+            for (byte i = 0; i < 3; i++)
             {
                 pipesUp[i].gameObject.SetActive(status);
                 pipesDown[i].gameObject.SetActive(status);

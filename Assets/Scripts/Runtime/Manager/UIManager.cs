@@ -35,27 +35,12 @@ namespace Runtime.Manager
 
         private void SubscribeEvents()
         {
-            UISignals.Instance.onScoreChange += ScoreController.Instance.OnScoreChange;
             UISignals.Instance.onOpenPanel += _uiPanelCommand.Execute;
             UISignals.Instance.onClosePanel += _uiPanelCommand.Undo;
             CoreGameSignals.Instance.onReset += _uiPanelCommand.OnReset;
+            UISignals.Instance.onScoreChange += ScoreController.Instance.OnScoreChange;
             CoreGameSignals.Instance.onReset += ScoreController.Instance.OnReset;
             UISignals.Instance.onGetScore += ScoreController.Instance.OnGetScore;
-        }
-
-        private void OnDisable()
-        {
-            UnsubscribeEvents();
-        }
-
-        private void UnsubscribeEvents()
-        {
-            UISignals.Instance.onScoreChange -= ScoreController.Instance.OnScoreChange;
-            UISignals.Instance.onOpenPanel -= _uiPanelCommand.Execute;
-            UISignals.Instance.onClosePanel -= _uiPanelCommand.Undo;
-            CoreGameSignals.Instance.onReset -= _uiPanelCommand.OnReset;
-            CoreGameSignals.Instance.onReset -= ScoreController.Instance.OnReset;
-            UISignals.Instance.onGetScore -= ScoreController.Instance.OnGetScore;
         }
 
         public void OnPlay()

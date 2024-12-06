@@ -54,7 +54,7 @@ namespace Runtime.Manager
         {
             var request = Resources.LoadAsync<CD_Background>("Data/CD_Background");
 
-            request.completed += operation =>
+            request.completed += _ =>
             {
                 if (request.asset is CD_Background cdBackground)
                     _levelElementData = cdBackground.Data;
@@ -84,9 +84,9 @@ namespace Runtime.Manager
         
         private void SubscribeEvents()
         {
-            BackgroundSignals.Instance.onSetPipesHeight += pipeController.SetPipesHeight;
+            BackgroundSignals.Instance.onSetPipesHeight += pipeController.OnSetPipesHeight;
             BackgroundSignals.Instance.onScrollBackground += backgroundController.OnScrollBackground;
-            BackgroundSignals.Instance.onSetBackgroundPosition += backgroundController.SetBackgroundPosition;
+            BackgroundSignals.Instance.onSetBackgroundPosition += backgroundController.OnSetBackgroundPosition;
             BackgroundSignals.Instance.onStopBackground += backgroundController.OnStopBackground;
             BackgroundSignals.Instance.onActivatePipes += pipeController.OnActivatePipes;
             CoreGameSignals.Instance.onReset += pipeController.OnReset;
@@ -100,9 +100,9 @@ namespace Runtime.Manager
 
         private void UnsubscribeEvents()
         {
-            BackgroundSignals.Instance.onSetPipesHeight -= pipeController.SetPipesHeight;
+            BackgroundSignals.Instance.onSetPipesHeight -= pipeController.OnSetPipesHeight;
             BackgroundSignals.Instance.onScrollBackground -= backgroundController.OnScrollBackground;
-            BackgroundSignals.Instance.onSetBackgroundPosition -= backgroundController.SetBackgroundPosition;
+            BackgroundSignals.Instance.onSetBackgroundPosition -= backgroundController.OnSetBackgroundPosition;
             BackgroundSignals.Instance.onStopBackground += backgroundController.OnStopBackground;
             CoreGameSignals.Instance.onReset -= pipeController.OnReset;
             CoreGameSignals.Instance.onReset -= OnReset;

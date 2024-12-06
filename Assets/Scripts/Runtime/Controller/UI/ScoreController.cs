@@ -1,19 +1,15 @@
 ﻿using System;
 using Runtime.Keys.UI;
+using Runtime.MonoSingleton;
+using Runtime.Signals;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Runtime.Controller.UI
 {
-    public class ScoreController : MonoBehaviour
+    public class ScoreController : MonoSingleton<ScoreController>
     {
         #region Self Variables
-
-        #region Public Variables
-
-        public static ScoreController Instance;
-
-        #endregion
 
         #region SerializeField Variables
 
@@ -32,19 +28,7 @@ namespace Runtime.Controller.UI
 
         private void Awake()
         {
-            Singleton();
             _scoreParams = new ScoreParams();
-        }
-
-        private void Singleton()
-        {
-            if (Instance != this && Instance != null)
-            {
-                Destroy(this);
-                return;
-            }
-
-            Instance = this;
         }
 
         public void OnScoreChange(ushort score)
@@ -152,5 +136,6 @@ namespace Runtime.Controller.UI
                 }
             }
         }
+        
     }
 }

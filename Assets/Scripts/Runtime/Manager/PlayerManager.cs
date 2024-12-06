@@ -61,19 +61,5 @@ namespace Runtime.Manager
             CoreGameSignals.Instance.onReset += PlayerTriggerController.Instance.OnReset;
             PlayerSignals.Instance.onDisableCollider += PlayerTriggerController.Instance.OnDisablePlayerCollider;
         }
-
-        private void OnDisable()
-        {
-            UnsubscribeEvents();
-        }
-
-        private void UnsubscribeEvents()
-        {
-            InputSignals.Instance.onTouched -= movementController.IsTouched;
-            InputSignals.Instance.onFirstTimeTouchTaken -= movementController.SetPlayerGravity;
-            CoreGameSignals.Instance.onReset -= movementController.OnReset;
-            CoreGameSignals.Instance.onReset -= PlayerTriggerController.Instance.OnReset;
-            PlayerSignals.Instance.onDisableCollider -= PlayerTriggerController.Instance.OnDisablePlayerCollider;
-        }
     }
 }

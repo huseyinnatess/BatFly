@@ -23,7 +23,6 @@ namespace Runtime.Observers
             _oldBackgroundTag = backgroundTag;
             BackgroundSignals.Instance.onSetBackgroundPosition?.Invoke(backgroundTag);
             BackgroundSignals.Instance.onSetPipesHeight?.Invoke(backgroundTag);
-            EnvironmentElementsSignal.Instance.onActivateElements?.Invoke(backgroundTag);
         }
 
         public void OnReset()

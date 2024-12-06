@@ -31,7 +31,6 @@ namespace Runtime.Controller.PipeAndBackground
             _secondBackground = backgroundObjects[1].Background;
             _scrollSpeed = settings.ScrollSpeed * Vector3.left;
             _spawnCount = settings.SpawnCount;
-            OnScrollBackground();
         }
 
         private void Update()
@@ -46,7 +45,7 @@ namespace Runtime.Controller.PipeAndBackground
             _isCanScroll = true;
         }
 
-        public void SetBackgroundPosition(string levelTag)
+        public void OnSetBackgroundPosition(string levelTag)
         {
             SetBackgroundPosition(levelTag == "FirstBackground" ? _secondBackground : _firstBackground);
         }

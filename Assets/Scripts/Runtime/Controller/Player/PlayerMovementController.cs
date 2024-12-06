@@ -47,7 +47,7 @@ namespace Runtime.Controller.Player
         private void StartHeightAnimation()
         {
             rigidbody.DOMoveY(rigidbody.position.y + _movementData.JumpHeight, _movementData.JumpDuration)
-                .SetEase(Ease.OutQuad)
+                .SetEase(Ease.InOutQuad)
                 .OnComplete(() => { rigidbody.velocity = Vector2.zero; });
         }
 
