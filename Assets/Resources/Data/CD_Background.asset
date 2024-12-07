@@ -15,8 +15,8 @@ MonoBehaviour:
   Data:
     PipeDatas:
       MinHeight: -0.72
-      MaxHeight: 3.56
-      PipeGapHeight: 1.38
+      MaxHeight: 3.4
+      PipeGapHeight: 1.34
     backgroundSettingses:
       SpawnCount: 41
       ScrollSpeed: 2
