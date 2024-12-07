@@ -34,7 +34,7 @@ namespace Runtime.Manager
         {
             var request = Resources.LoadAsync<CD_Player>("Data/CD_Player");
 
-            request.completed += operation =>
+            request.completed += _ =>
             {
                 if (request.asset is CD_Player cdPlayer)
                     _playerData = cdPlayer.Data;

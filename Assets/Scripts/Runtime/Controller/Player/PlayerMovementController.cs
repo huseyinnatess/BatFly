@@ -3,6 +3,7 @@ using Runtime.Data.ValueObjects;
 using Runtime.Enums;
 using Runtime.Signals;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Runtime.Controller.Player
 {
@@ -13,7 +14,6 @@ namespace Runtime.Controller.Player
         #region Serializefield Variables
 
         [SerializeField] private new Rigidbody2D rigidbody;
-
         #region Private Variables
 
         private PlayerMovementData _movementData;
@@ -53,7 +53,7 @@ namespace Runtime.Controller.Player
 
         private void StartRotationAnimation()
         {
-            float startRotation = transform.parent.parent.rotation.z;
+            float startRotation = rigidbody.gameObject.transform.rotation.z;
             PlayerSignals.Instance.onPlayerSpriteUpdate?.Invoke((byte)PlayerSprite.UpFlap);
 
             rigidbody
@@ -77,8 +77,10 @@ namespace Runtime.Controller.Player
             rigidbody.gravityScale = gravity;
         }
 
-        private void SetDefaultPosition()
+        private void SetRigidbodyDefault()
         {
+            rigidbody.velocity = Vector2.zero;
+            rigidbody.transform.rotation = Quaternion.identity;
             rigidbody.transform.position = _movementData.DefaultPosition;
         }
 
@@ -86,9 +88,7 @@ namespace Runtime.Controller.Player
         {
             IsTouched(false);
             SetPlayerGravity(0);
-            rigidbody.velocity = Vector2.zero;
-            rigidbody.transform.rotation = Quaternion.identity;
-            SetDefaultPosition();
+            SetRigidbodyDefault();
         }
     }
 }

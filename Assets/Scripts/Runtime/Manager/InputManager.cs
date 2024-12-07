@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Runtime.Signals;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Runtime.Manager
 {
@@ -39,12 +40,21 @@ namespace Runtime.Manager
             }
             else
                 InputSignals.Instance.onTouched?.Invoke(true);
+
             AudioSignals.Instance.onWingAudio?.Invoke();
         }
 
         private bool IsPointerOverUIElement()
         {
-            return EventSystem.current.IsPointerOverGameObject();
+            PointerEventData pointerData = new PointerEventData(EventSystem.current)
+            {
+                position = Input.mousePosition
+            };
+
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerData, raycastResults);
+
+            return raycastResults.Count > 0;
         }
 
         private void OnDisable()

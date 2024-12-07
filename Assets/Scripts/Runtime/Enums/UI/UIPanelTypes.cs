@@ -2,7 +2,7 @@
 {
     public enum UIPanelTypes
     {
-        MainMenu,
+        Start,
         GameOver
     }
 }

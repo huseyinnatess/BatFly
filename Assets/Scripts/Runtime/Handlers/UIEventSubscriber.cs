@@ -59,10 +59,10 @@ namespace Runtime.Handlers
 
         private void OnDisable()
         {
-            UnubscribeEvents();
+            UnsubscribeEvents();
         }
 
-        private void UnubscribeEvents()
+        private void UnsubscribeEvents()
         {
             button.onClick.RemoveAllListeners();
         }

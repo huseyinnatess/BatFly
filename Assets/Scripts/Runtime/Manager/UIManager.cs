@@ -1,5 +1,7 @@
-﻿using Runtime.Command.UI;
+﻿using System;
+using Runtime.Command.UI;
 using Runtime.Controller.UI;
+using Runtime.Enums.UI;
 using Runtime.Signals;
 using UnityEngine;
 
@@ -26,6 +28,16 @@ namespace Runtime.Manager
         private void Awake()
         {
             _uiPanelCommand = new UIPanelCommand(uiPanelLayers);
+        }
+
+        private void Start()
+        {
+            ActivateStartPanel();
+        }
+
+        private void ActivateStartPanel()
+        {
+            UISignals.Instance.onOpenPanel?.Invoke(UIPanelTypes.Start, 0);
         }
 
         private void OnEnable()
