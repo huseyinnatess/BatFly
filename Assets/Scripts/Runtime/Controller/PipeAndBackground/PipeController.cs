@@ -1,5 +1,4 @@
-﻿using System;
-using Runtime.Data.ValueObjects;
+﻿using Runtime.Data.ValueObjects;
 using Runtime.Manager;
 using Runtime.MonoSingleton;
 using Unity.Mathematics;

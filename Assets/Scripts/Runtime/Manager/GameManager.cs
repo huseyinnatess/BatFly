@@ -12,8 +12,6 @@ namespace Runtime.Manager
 
         [SerializeField] private PlayerTriggerController playerTriggerController;
 
-        #endregion
-
         #region Private Variables
 
         private IPlayerTriggerObserver _backgroundObserver;
@@ -21,7 +19,8 @@ namespace Runtime.Manager
         private IPlayerTriggerObserver _pipeCollisionObserver;
 
         #endregion
-
+        #endregion
+        
         private void Start()
         {
             CreateObserver();

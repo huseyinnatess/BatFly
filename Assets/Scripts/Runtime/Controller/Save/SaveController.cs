@@ -1,38 +1,12 @@
 ﻿using Runtime.Keys.Save;
+using Runtime.MonoSingleton;
 using Runtime.Signals;
 using UnityEngine;
 
 namespace Runtime.Controller.Save
 {
-    public class SaveController : MonoBehaviour
+    public class SaveController : MonoSingleton<SaveController>
     {
-        #region Self Variables
-
-        #region Public Variables
-
-        public static SaveController Instance;
-
-        #endregion
-        
-
-        #endregion
-
-        private void Awake()
-        {
-            Singleton();
-        }
-
-        private void Singleton()
-        {
-            if (Instance != this && Instance != null)
-            {
-                Destroy(this);
-                return;
-            }
-
-            Instance = this;
-        }
-
         public void OnSaveData()
         {
             SaveGame(

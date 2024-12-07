@@ -1,29 +1,10 @@
-﻿using Runtime.Enums;
-using Runtime.MonoSingleton;
-using UnityEngine;
+﻿using Runtime.MonoSingleton;
 using UnityEngine.Events;
 
 namespace Runtime.Signals
 {
-    public class PlayerSignals : MonoBehaviour
+    public class PlayerSignals : MonoSingleton<PlayerSignals>
     {
-        public static PlayerSignals Instance;
-
-        private void Awake()
-        {
-            Singleton();
-        }
-
-        private void Singleton()
-        {
-            if (Instance != this && Instance != null)
-            {
-                Destroy(this);
-                return;
-            }
-
-            Instance = this;
-        }
         public UnityAction<byte> onPlayerSpriteUpdate = delegate { };
         public UnityAction onDisableCollider = delegate { };
     }

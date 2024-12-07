@@ -3,7 +3,6 @@ using Runtime.Data.ValueObjects;
 using Runtime.Enums;
 using Runtime.Signals;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Runtime.Controller.Player
 {
@@ -14,6 +13,7 @@ namespace Runtime.Controller.Player
         #region Serializefield Variables
 
         [SerializeField] private new Rigidbody2D rigidbody;
+
         #region Private Variables
 
         private PlayerMovementData _movementData;

@@ -12,7 +12,6 @@ namespace Runtime.Signals
         public UnityAction<ushort> onScoreChange = delegate { };
         public UnityAction<UIPanelTypes, byte> onOpenPanel = delegate { };
         public UnityAction<byte> onClosePanel = delegate { };
-        public UnityAction onWriteScore = delegate { };
         public Func<ushort> onGetScore = null;
     }
 }
