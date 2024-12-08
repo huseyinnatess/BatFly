@@ -5,6 +5,7 @@ Flappy Bird oyununun aynısını Unity üzerinde geliştirdim. Projenin temel am
 - Asenkron programlama yapıları
 - Tasarım desenleri (Design Patterns)
 - Scriptable Object kullanımı
+- Solid Prensipleri
 - DOTween gibi eklentilerin entegrasyonu
 
 Kısacası, Unity'de yazılım geliştirme becerilerimi standart bir seviyeye getirmek ve derinleştirmek.
