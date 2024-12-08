@@ -88,7 +88,7 @@ Projede her sınıf ve fonksiyon, yalnızca kendi sorumluluğunu yerine getirece
 - Unity 2021.3.38f LTS veya üzeri bir sürüm
 - DOTween Plugin
 - .NET 4.x veya üzeri
-- 
+
 ## **Kurulum ve Çalıştırma**
 
 1. Unity 2021.3.38f LTS veya üzeri bir sürüm gereklidir
