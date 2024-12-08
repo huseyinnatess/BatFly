@@ -1,5 +1,7 @@
 # **Bat Fly**
 
+![Project Demo](Gif/BatFly.gif)
+
 Flappy Bird oyununun aynısını Unity üzerinde geliştirdim. Projenin temel amacı, Unity event sistemine hakim olmak ve aşağıdaki teknolojik becerileri geliştirmek:
 
 - Asenkron programlama yapıları
