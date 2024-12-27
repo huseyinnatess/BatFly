@@ -1,6 +1,6 @@
 # **Bat Fly**
 
-[!Google Play](https://play.google.com/store/apps/details?id=com.AtesGames.com.unity.template.mobile2D)
+[![Google Play Badge](https://img.shields.io/badge/Download-Google_Play-34A853?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.AtesGames.com.unity.template.mobile2D) 
 
 ![Project Demo](Gif/BatFly.gif)
 
