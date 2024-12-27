@@ -1,5 +1,7 @@
 # **Bat Fly**
 
+[![Google Play Badge](Google Play Link: https://play.google.com/store/apps/details?id=com.AtesGames.com.unity.template.mobile2D)
+
 ![Project Demo](Gif/BatFly.gif)
 
 Flappy Bird oyununun aynısını Unity üzerinde geliştirdim. Projenin temel amacı, Unity event sistemine hakim olmak ve aşağıdaki teknolojik becerileri geliştirmek:
